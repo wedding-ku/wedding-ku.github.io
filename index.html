@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <style>
+    /* CSS styles for the page */
+    body {
+      background-color: #f1f1f1;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 50px;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    
+    .countdown {
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+    
+    .email-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    
+    .email-input {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+    
+    .submit-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    
+    .submit-btn:hover {
+      background-color: #45a049;
+    }
+    
+    .social-icons {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .social-icons li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    
+    .social-icons li a {
+      display: block;
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+      text-align: center;
+      line-height: 40px;
+      border-radius: 50%;
+      background-color: #f1f1f1;
+    }
+    
+    /* Media queries for responsiveness */
+    @media (max-width: 600px) {
+      .container {
+        padding: 30px;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
+      
+      p {
+        font-size: 16px;
+      }
+      
+      .email-input, .submit-btn {
+        font-size: 14px;
+      }
+      
+      .social-icons li a {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+        line-height: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Coming Soon</h1>
+    <p>We're working on something amazing and exciting!</p>
+    <div class="countdown">
+      <p id="countdown-text">Launching in:</p>
+      <p id="countdown-timer"></p>
+    </div>
+    <form class="email-form">
+      <input type="email" class="email-input" placeholder="Enter your email address" required>
+      <input type="submit" class="submit-btn" value="Notify Me">
+    </form>
+    <ul class="social-icons">
+      <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+    </ul>
+  </div>
+
+  <script>
+    // JavaScript for the countdown timer
+    var countdownDate = new Date("2023-07-01").getTime();
+
+    var countdown = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countdownDate - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown-timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown-text").innerHTML = "Launched!";
+        document.getElementById("countdown-timer").innerHTML = "";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
